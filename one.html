@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>emission</title>
+    <script>
+     begin=new Date();
+    </script>
+    <style>
+        *{
+            border: 3px solid blue;
+            font-size: 25px;
+        }
+        header{
+           background-color: antiquewhite; 
+           color: black;
+           text-align: center;
+           height: 20%;
+        }
+        main{
+            background-color:aqua; 
+           color: black;
+           text-align: center; 
+           height:70%;
+        }
+        footer{
+            background-color: rgb(85, 237, 140); 
+           color: black;
+           text-align: center;
+           height:10%;
+        }
+    </style>
+</head>
+<script>
+console.log("CSS: "+(new Date()-begin)+"ms!");
+</script>
+
+<body>
+    <header>
+        Welcome to my personal page
+    </header>
+    <main>
+        content
+    </main>
+    <footer>
+        江西科技师范大学 黄锡昭 15179707993
+    </footer>
+    <script>
+     document.body.style.height=innerHeight-36+'px';
+     console.log("web page:"+(new Date()-begin)+"ms!");
+     let time=new Date();
+     for(let i=1;i<=1e8;i++){}
+    console.log("1~1e8:"+(new Date()-time)+"ms!");
+    </script>
+    
+</body>
+</html>
