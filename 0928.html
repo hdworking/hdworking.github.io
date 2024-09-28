@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>emission</title>
+    <script>
+     begin=new Date();
+    </script>
+    <style>
+        *{
+            margin: 0;
+            font-size: 25px;
+        }
+        p{
+            height: 1.8em;
+            border: 1px solid white;
+        }
+        header{
+           background-color: antiquewhite; 
+           color: black;
+           text-align: center;
+           height: 20%;
+        }
+        main{
+            background-color:aqua; 
+           color: black;
+           text-align: center; 
+           height:70%;
+        }
+        footer{
+            background-color: rgb(85, 237, 140); 
+           color: black;
+           text-align: center;
+           height:10%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        Welcome to my personal page
+    </header>
+    <main>
+        <p id="word">abandon</p>
+        <p id="pron">/ə'bændən/</p>
+        <p id="chinese">vt.离弃,丢弃;遗弃,抛弃;放弃</p>
+        <p><input type="button" value="随机单词" onclick="xyg()"></p> 
+        <p><input type="button" value="读入单词" onclick="dr()"></p>
+    </main>
+    <footer>
+        <p id="first">单词库：cet/cet6-3加载成功</p>
+    </footer>
+    <script>
+        document.body.style.height=innerHeight-36+'px';
+        let s='';
+        let arr=[];
+        let str=['cet/cet6-1.txt','cet/cet6-2.txt','cet/cet6-3.txt'];
+        for(let i=1;i<=3;i++){
+            fetch(str[i-1]).then(res =>res.text()).then(txt => {
+                s+=txt
+                UI.abc("footer","单词库"+str[i-1]+"加载成功")
+            });
+        }
+        function xyg(){
+            arr=s.split('\r\n');    
+            let rand=Math.floor(arr.length*Math.random())
+            let s1=arr[rand];
+            let begin=s1.indexOf('\t');
+            let  end=s1.lastIndexOf('\t');
+            let word=s1.slice(0,begin);
+            let pron=s1.slice(begin+1,end);
+            let chinese=s1.slice(end+1);
+            select('#word').textContent=word;
+            select('#pron').textContent=pron;
+            select('#chinese').textContent=chinese;
+    }
+    function dr(){
+        if(s.length>5000){
+            select('footer').textContent=("读入成功");
+        }
+        else select('footer').textContent=("读入失败");
+    }
+    
+     function select(str){
+        let dom=document.querySelector(str);
+        return dom;
+     }
+
+     let UI={};
+     UI.abc=function(a,b){
+         select(a).textContent=b;
+     }
+    </script>
+    
+</body>
+</html>
