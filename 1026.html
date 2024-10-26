@@ -52,7 +52,8 @@
         Model.users = [ {userName: 'Mike' , passWord: '1234'} ] ;
         Model.pos = 0 ;
         let str1=localStorage.getItem('users');
-        Model.users=JSON.parse(str1);
+        if(str1!=null)
+            Model.users=JSON.parse(str1);
         let createCET6=function(str){
          let arr = str.split('\n') ;
          for(let i=0; i< arr.length ; i++){
